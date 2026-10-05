@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
-import { CalculatedFieldsRenderer } from '@/app/components/CalculatedFieldsRenderer';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
@@ -206,7 +205,28 @@ export default async function BlogPost({ params }: PageProps) {
           }
         }
       `}</style>
-      <CalculatedFieldsRenderer />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            // Handle copy button clicks for calculated fields
+            document.addEventListener('click', function(e) {
+              if (e.target.closest('.calculated-field-copy-btn')) {
+                const btn = e.target.closest('.calculated-field-copy-btn');
+                const formula = btn.getAttribute('data-formula');
+                if (formula) {
+                  navigator.clipboard.writeText(formula).then(function() {
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<span class="copy-icon">✓</span><span class="copy-text">Copied!</span>';
+                    setTimeout(function() {
+                      btn.innerHTML = originalHTML;
+                    }, 2000);
+                  });
+                }
+              }
+            });
+          `,
+        }}
+      />
     </>
   );
 }

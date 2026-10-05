@@ -19,21 +19,30 @@ md.renderer.rules.html_inline = function(tokens, idx) {
 };
 
 export function markdownToHtml(markdown: string): string {
-  // Process calculated fields FIRST: convert {field:Name|Formula} to React component calls
+  // Process calculated fields FIRST: convert {field:Name|Formula} to HTML components
   let processed = markdown.replace(
     /\{field:([^|]+)\|([^\}]+)\}/g,
     (match, name, formula) => {
-      // Escape the formula for HTML/React - handle newlines and special chars
-      const escapedName = name.trim().replace(/"/g, '&quot;');
-      const escapedFormula = formula
-        .trim()
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/\n/g, '&#10;');
-      // Return HTML that will be preserved
-      return `<div data-field-name="${escapedName}" data-field-formula="${escapedFormula}" class="field-placeholder"></div>`;
+      // Escape the formula for HTML - handle special chars but NOT entities (we want raw HTML)
+      const escapedName = name.trim();
+      const escapedFormula = formula.trim();
+      
+      // Return complete HTML for the calculated field component
+      return `<div class="calculated-field">
+  <div class="calculated-field-header">
+    <span class="calculated-field-name">${escapedName}</span>
+    <button class="calculated-field-copy-btn" data-formula="${escapedFormula
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')}" aria-label="Copy ${escapedName} formula">
+      <span class="copy-icon">📋</span><span class="copy-text">Copy</span>
+    </button>
+  </div>
+  <pre class="calculated-field-formula"><code>${escapedFormula
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')}</code></pre>
+</div>`;
     }
   );
 
@@ -57,3 +66,4 @@ export function markdownToHtml(markdown: string): string {
 
   return md.render(processed);
 }
+
