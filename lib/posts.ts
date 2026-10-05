@@ -8,6 +8,7 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   excerpt: string;
   content: string;
   author?: string;
@@ -32,6 +33,7 @@ export async function getPosts(): Promise<Post[]> {
         slug,
         title: data.title || slug,
         date: data.date || new Date().toISOString().split('T')[0],
+        updated: data.updated,
         excerpt: data.excerpt || content.substring(0, 150),
         content,
         author: data.author || 'Rebecca Bergh',

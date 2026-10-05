@@ -38,6 +38,7 @@ export default async function BlogPost({ params }: PageProps) {
             <h1 className="text-teal mb-4">{post.title}</h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-charcoal">
               <time dateTime={post.date}>{post.date}</time>
+              {post.updated && <span className="text-coral italic">Updated {post.updated}</span>}
               {post.author && <span>by {post.author}</span>}
             </div>
             {post.tags && post.tags.length > 0 && (
