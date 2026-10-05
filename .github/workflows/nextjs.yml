@@ -69,19 +69,19 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: npm run build
-      - name: Verify public folder exists
+      - name: Copy public assets
         run: |
-          echo "=== Checking source public/ ==="
-          ls -la public/ || echo "public/ not found"
-          echo ""
-          echo "=== Checking out/ after build ==="
-          ls -la out/ 2>/dev/null || echo "out/ not found"
+          echo "Copying public folder to out/"
+          cp -r public/* out/ || echo "Failed to copy or public dir doesn't exist"
+          echo "Contents after copy:"
+          ls -la out/logo*.png 2>&1 || echo "Still no logos"
+      - name: Verify build output
+        run: |
+          echo "=== Contents of out/ directory ==="
+          ls -laR out/ | head -100
           echo ""
           echo "=== Looking for PNG files ==="
-          find . -name "*.png" -type f 2>/dev/null | grep -v node_modules | grep -v .next
-          echo ""
-          echo "=== Checking entire out/ tree ==="
-          find out -type f 2>/dev/null | head -30
+          find out -name "*.png" -type f
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
