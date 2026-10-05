@@ -2,7 +2,7 @@
 title: "Taking a 2,650-Mile (Virtual) Journey"
 date: "2021-08-17"
 excerpt: "An interactive visualization project exploring travel data through a map-based narrative. Started in late spring, completed mid-summer—a journey through data visualization challenges."
-author: "Rebecca Gourley"
+author: "Rebecca Bergh"
 tags: ["Tableau", "Geography", "Interactive Design"]
 ---
 
@@ -89,3 +89,8 @@ This project opens possibilities for:
 - Location-based analytics
 
 The 2,650 miles traveled in this visualization is just the beginning. What journey will your data tell?
+
+{tableau:https://public.tableau.com/views/Takea2650-milejourneyonthePCT/PCTStart}
+
+**Click the image above to explore the interactive map**
+

@@ -54,13 +54,11 @@ export default async function BlogPost({ params }: PageProps) {
 
         {/* Content Section */}
         <section className="section bg-white">
-          <div className="container-max">
-            <div className="prose prose-lg max-w-3xl mx-auto">
-              <div
-                className="prose-content"
-                dangerouslySetInnerHTML={{ __html: htmlContent }}
-              />
-            </div>
+          <div className="prose-content-wrapper">
+            <div
+              className="prose-content"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
           </div>
         </section>
 
@@ -75,6 +73,15 @@ export default async function BlogPost({ params }: PageProps) {
       </article>
 
       <style>{`
+        .prose-content-wrapper {
+          padding: 0 1.5rem;
+        }
+
+        .prose-content {
+          max-width: 48rem;
+          margin: 0 auto;
+        }
+
         .prose-content h1,
         .prose-content h2,
         .prose-content h3,
@@ -190,6 +197,12 @@ export default async function BlogPost({ params }: PageProps) {
           height: 2px;
           background-color: #e56b52;
           margin: 2em 0;
+        }
+
+        @media (max-width: 768px) {
+          .prose-content-wrapper {
+            padding: 0 1rem;
+          }
         }
       `}</style>
     </>

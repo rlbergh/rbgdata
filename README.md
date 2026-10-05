@@ -86,7 +86,7 @@ Create a new markdown file in the `posts/` directory:
 title: "My First Post"
 date: "2024-01-15"
 excerpt: "A brief description of the post"
-author: "Rebecca Gourley"
+author: "Rebecca Bergh"
 tags: ["Tableau", "Data Visualization"]
 ---
 
@@ -99,7 +99,7 @@ Front matter (between `---`) is required with:
 - `title` - Post title
 - `date` - Publication date (YYYY-MM-DD)
 - `excerpt` - Short description (used in listings)
-- `author` - Author name (optional, defaults to Rebecca Gourley)
+- `author` - Author name (optional, defaults to Rebecca Bergh)
 - `tags` - Array of tags (optional)
 
 ## Deploying to GitHub Pages
@@ -233,4 +233,4 @@ For issues or questions, refer to:
 
 ## License
 
-© 2024 Rebecca Gourley. All rights reserved.
+© 2026 Rebecca Bergh. All rights reserved.

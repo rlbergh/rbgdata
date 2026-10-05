@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-black mb-4 text-coral">RBG Data</h3>
             <p className="text-sm leading-relaxed">
-              Data stories and visualization insights by Rebecca Gourley.
+              Data stories and visualization insights by Rebecca Bergh.
             </p>
           </div>
           <div>
@@ -17,11 +17,6 @@ export default function Footer() {
               <li>
                 <a href="/blog" className="hover:text-coral transition-colors">
                   Blog
-                </a>
-              </li>
-              <li>
-                <a href="/portfolio" className="hover:text-coral transition-colors">
-                  Portfolio
                 </a>
               </li>
               <li>

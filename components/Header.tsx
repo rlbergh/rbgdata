@@ -15,18 +15,18 @@ export default function Header() {
             <Image
               src="/logo-icon.png"
               alt="RBG Data"
-              width={40}
-              height={40}
+              width={60}
+              height={50}
               priority
-              className="w-10 h-10"
+              className="h-12 w-auto"
             />
             <Image
               src="/logo-wordmark.png"
               alt="RBG Data"
-              width={150}
-              height={40}
+              width={200}
+              height={50}
               priority
-              className="hidden sm:block h-8 w-auto"
+              className="hidden sm:block h-auto w-32 md:w-40"
             />
           </Link>
 
@@ -34,9 +34,6 @@ export default function Header() {
           <div className="hidden md:flex gap-8 items-center">
             <Link href="/blog" className="text-charcoal hover:text-coral transition-colors">
               Blog
-            </Link>
-            <Link href="/portfolio" className="text-charcoal hover:text-coral transition-colors">
-              Portfolio
             </Link>
             <Link href="/about" className="text-charcoal hover:text-coral transition-colors">
               About
@@ -84,13 +81,6 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Blog
-            </Link>
-            <Link
-              href="/portfolio"
-              className="text-charcoal hover:text-coral transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Portfolio
             </Link>
             <Link
               href="/about"

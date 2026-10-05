@@ -2,7 +2,7 @@
 title: "How to: Convert dates into zodiac signs in Tableau"
 date: "2021-10-31"
 excerpt: "A radial chart showing how many of each zodiac sign were born between 1994 and 2014. Learn the techniques for date manipulation and circular visualizations in Tableau."
-author: "Rebecca Gourley"
+author: "Rebecca Bergh"
 tags: ["Tableau", "Data Visualization", "Tutorial"]
 ---
 
@@ -13,6 +13,10 @@ When you need to create a visualization that goes beyond traditional bar charts 
 While the question might seem simple, the visualization approach opens up interesting possibilities. A radial or circular chart provides a visually interesting way to display this cyclical data—after all, zodiac signs are tied to calendar months, which are cyclical by nature.
 
 ## The Approach
+
+
+{youtube:https://www.youtube.com/watch?v=BSP-rM2i9kg}
+
 
 ### Step 1: Calculate Zodiac Signs from Dates
 
@@ -44,6 +48,10 @@ To create a radial (circular) chart in Tableau:
 ### Step 3: Filter the Date Range
 
 Apply date filters to show births between 1994 and 2014. This gives us a 20-year snapshot of zodiac distribution.
+
+### See it in action:
+
+{tableau:https://public.tableau.com/views/Howpopularisyourbirthday_16389812815230/Howpopularisyourbirthday?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link}
 
 ## Key Insights
 

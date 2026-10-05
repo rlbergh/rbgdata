@@ -34,7 +34,7 @@ export async function getPosts(): Promise<Post[]> {
         date: data.date || new Date().toISOString().split('T')[0],
         excerpt: data.excerpt || content.substring(0, 150),
         content,
-        author: data.author || 'Rebecca Gourley',
+        author: data.author || 'Rebecca Bergh',
         tags: data.tags || [],
       };
     });

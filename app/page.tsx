@@ -18,7 +18,7 @@ export default async function Home() {
                 width={600}
                 height={180}
                 priority
-                className="w-full max-w-sm h-auto mb-8"
+                className="w-full max-w-2xl h-auto mb-8"
               />
               <p className="text-lg mb-6 leading-relaxed">
                 Exploring data visualization, Tableau insights, and accessibility in data design.
@@ -27,9 +27,6 @@ export default async function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/blog" className="btn btn-primary">
                   Read Blog
-                </Link>
-                <Link href="/portfolio" className="btn btn-secondary">
-                  View Portfolio
                 </Link>
               </div>
             </div>

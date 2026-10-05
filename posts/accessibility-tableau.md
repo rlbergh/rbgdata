@@ -2,7 +2,7 @@
 title: "Designing for Accessibility: Easy Steps to Make Your Tableau Visualizations More Screen Reader-Friendly"
 date: "2021-05-31"
 excerpt: "In-depth guide on implementing accessibility best practices in Tableau visualizations. Learn concrete steps to make your data accessible to screen reader users."
-author: "Rebecca Gourley"
+author: "Rebecca Bergh"
 tags: ["Accessibility", "Tableau", "Design"]
 ---
 
