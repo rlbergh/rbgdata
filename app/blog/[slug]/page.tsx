@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
+import { CalculatedFieldsRenderer } from '@/app/components/CalculatedFieldsRenderer';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
@@ -205,78 +206,7 @@ export default async function BlogPost({ params }: PageProps) {
           }
         }
       `}</style>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Render calculated field components from placeholders
-            function renderCalculatedFields() {
-              console.log('[RBG Data] renderCalculatedFields called');
-              const placeholders = document.querySelectorAll('.field-placeholder');
-              console.log('[RBG Data] Found', placeholders.length, 'placeholders');
-              
-              placeholders.forEach(function(placeholder, index) {
-                const name = placeholder.getAttribute('data-field-name');
-                const formula = placeholder.getAttribute('data-field-formula');
-                console.log('[RBG Data] Placeholder', index, '- name:', name, 'formula:', formula);
-                
-                if (name && formula) {
-                  // Create the field element
-                  const fieldDiv = document.createElement('div');
-                  fieldDiv.className = 'calculated-field';
-                  
-                  const header = document.createElement('div');
-                  header.className = 'calculated-field-header';
-                  
-                  const nameSpan = document.createElement('span');
-                  nameSpan.className = 'calculated-field-name';
-                  nameSpan.textContent = name;
-                  
-                  const button = document.createElement('button');
-                  button.className = 'calculated-field-copy-btn';
-                  button.setAttribute('aria-label', 'Copy ' + name + ' formula');
-                  button.innerHTML = '<span class="copy-icon">📋</span><span class="copy-text">Copy</span>';
-                  
-                  button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    navigator.clipboard.writeText(formula).then(function() {
-                      const originalHTML = button.innerHTML;
-                      button.innerHTML = '<span class="copy-icon">✓</span><span class="copy-text">Copied!</span>';
-                      setTimeout(function() {
-                        button.innerHTML = originalHTML;
-                      }, 2000);
-                    });
-                  });
-                  
-                  header.appendChild(nameSpan);
-                  header.appendChild(button);
-                  
-                  const pre = document.createElement('pre');
-                  pre.className = 'calculated-field-formula';
-                  const code = document.createElement('code');
-                  code.textContent = formula;
-                  pre.appendChild(code);
-                  
-                  fieldDiv.appendChild(header);
-                  fieldDiv.appendChild(pre);
-                  
-                  placeholder.replaceWith(fieldDiv);
-                  console.log('[RBG Data] Rendered field:', name);
-                }
-              });
-            }
-            
-            // Try to render immediately
-            console.log('[RBG Data] Script loaded');
-            renderCalculatedFields();
-            
-            // Also try on DOMContentLoaded
-            document.addEventListener('DOMContentLoaded', function() {
-              console.log('[RBG Data] DOMContentLoaded fired');
-              renderCalculatedFields();
-            });
-          `,
-        }}
-      />
+      <CalculatedFieldsRenderer />
     </>
   );
 }
