@@ -1,31 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav className="container-max px-6 py-3 md:px-12 lg:px-20">
         <div className="flex justify-between items-center">
           <Link href="/" className="no-underline flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <Image
-              src="/logo-icon.png"
+            <img
+              src={`${basePath}/logo-icon.png`}
               alt="RBG Data"
-              width={60}
-              height={50}
-              priority
               className="h-12 w-auto"
             />
-            <Image
-              src="/logo-wordmark.png"
+            <img
+              src={`${basePath}/logo-wordmark.png`}
               alt="RBG Data"
-              width={200}
-              height={50}
-              priority
               className="hidden sm:block h-auto w-32 md:w-40"
             />
           </Link>

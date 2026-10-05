@@ -69,19 +69,37 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: npm run build
+      - name: Debug - Check source
+        run: |
+          echo "=== Checking if public folder exists in source ==="
+          ls -la public/ || echo "ERROR: public folder not found!"
+          echo ""
+          echo "=== All files in public ==="
+          find public -type f
+      - name: Debug - Check out directory exists
+        run: |
+          echo "=== Does out/ exist? ==="
+          ls -la out/ 2>&1 || echo "out/ does not exist!"
+          echo ""
+          echo "=== All files in out/ ==="
+          find out -type f 2>&1 | head -50
       - name: Copy public assets
         run: |
-          echo "Copying public folder to out/"
-          cp -r public/* out/ || echo "Failed to copy or public dir doesn't exist"
-          echo "Contents after copy:"
-          ls -la out/logo*.png 2>&1 || echo "Still no logos"
-      - name: Verify build output
+          echo "=== About to copy public to out ==="
+          if [ -d "public" ]; then
+            echo "public/ exists, copying..."
+            cp -v -r public/* out/ 2>&1
+          else
+            echo "ERROR: public/ directory does not exist"
+            exit 1
+          fi
+      - name: Debug - Verify copy worked
         run: |
-          echo "=== Contents of out/ directory ==="
-          ls -laR out/ | head -100
+          echo "=== After copy attempt ==="
+          find out -name "*.png" -o -name "*.txt"
           echo ""
-          echo "=== Looking for PNG files ==="
-          find out -name "*.png" -type f
+          echo "=== Full out/ contents ==="
+          find out -type f 2>&1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
