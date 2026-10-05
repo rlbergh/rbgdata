@@ -59,7 +59,7 @@ This is one of the most basic pieces of web accessibility but it’s important t
 - Type out any text you have embedded in the image
 
 >Example:
-<img src="/rbgdata/public/lake-mountain.png" alt="Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background." style="float: left; width: 300px; margin-right: 20px;">
+<img src="/rbgdata/lake-mountain.png" alt="Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background." style="float: left; width: 350px; margin-right: 20px;">
 >Alt text: Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background.
 
 
