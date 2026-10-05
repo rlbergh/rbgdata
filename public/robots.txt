@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rbgdata.com/sitemap.xml

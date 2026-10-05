@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-charcoal font-montserrat;
+}
+
+/* Typography system */
+h1 {
+  @apply font-black text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
+}
+
+h2 {
+  @apply font-extrabold text-3xl md:text-4xl leading-tight tracking-tight mt-8 mb-4;
+}
+
+h3 {
+  @apply font-bold text-2xl md:text-3xl leading-snug mt-6 mb-3;
+}
+
+h4 {
+  @apply font-bold text-xl leading-snug mt-4 mb-2;
+}
+
+p {
+  @apply leading-relaxed mb-4;
+}
+
+a {
+  @apply text-teal hover:text-coral transition-colors duration-200 underline;
+}
+
+a:hover {
+  @apply text-coral;
+}
+
+/* Accent elements */
+.accent-coral {
+  @apply text-coral;
+}
+
+.accent-gold {
+  @apply text-gold;
+}
+
+.accent-teal {
+  @apply text-teal;
+}
+
+/* Strong grids and geometric shapes - utility classes */
+.grid-geometric {
+  @apply grid gap-8 md:gap-12;
+}
+
+.card {
+  @apply bg-white p-8 rounded-none border-l-4 border-teal shadow-sm hover:shadow-md transition-shadow;
+}
+
+.card.accent-coral {
+  @apply border-l-4 border-coral;
+}
+
+.card.accent-gold {
+  @apply border-l-4 border-gold;
+}
+
+/* Dot and line decorative elements */
+.dot {
+  @apply w-4 h-4 rounded-full bg-teal;
+}
+
+.dot-coral {
+  @apply bg-coral;
+}
+
+.dot-gold {
+  @apply bg-gold;
+}
+
+.line {
+  @apply h-1 bg-teal;
+}
+
+.line-coral {
+  @apply bg-coral;
+}
+
+/* Buttons */
+.btn {
+  @apply px-6 py-3 font-bold transition-all duration-200 no-underline inline-block;
+}
+
+.btn-primary {
+  @apply bg-teal text-cream hover:bg-charcoal;
+}
+
+.btn-secondary {
+  @apply border-2 border-teal text-teal hover:bg-teal hover:text-cream;
+}
+
+.btn-coral {
+  @apply bg-coral text-cream hover:bg-charcoal;
+}
+
+/* Section spacing */
+.section {
+  @apply py-16 md:py-24 px-6 md:px-12 lg:px-20;
+}
+
+.section-hero {
+  @apply py-20 md:py-32 px-6 md:px-12 lg:px-20;
+}
+
+/* Containers */
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-2 outline-offset-2 outline-teal;
+}

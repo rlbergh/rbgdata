@@ -1,0 +1,30 @@
+{
+  "name": "rbgdata-site",
+  "version": "1.0.0",
+  "description": "RBG Data - Data stories and visualization insights",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^13.0.2",
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-toc-done-right": "^4.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16",
+    "typescript": "^5.2.2",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  }
+}
