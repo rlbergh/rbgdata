@@ -2,7 +2,7 @@
 const nextConfig = {
   // For GitHub Pages deployment
   output: 'export',
-  basePath: '',
+  basePath: '/rbgdata',
   trailingSlash: true,
   images: {
     unoptimized: true,
