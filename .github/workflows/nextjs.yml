@@ -51,7 +51,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -68,13 +68,20 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Verify build output
+        run: npm run build
+      - name: Verify public folder exists
         run: |
-          echo "Checking out/ directory:"
-          ls -la out/ 2>/dev/null || echo "out/ directory not found"
-          echo "Checking for public files:"
-          find out -name "*.png" -o -name "*.jpg" -o -name "robots.txt" 2>/dev/null | head -20
+          echo "=== Checking source public/ ==="
+          ls -la public/ || echo "public/ not found"
+          echo ""
+          echo "=== Checking out/ after build ==="
+          ls -la out/ 2>/dev/null || echo "out/ not found"
+          echo ""
+          echo "=== Looking for PNG files ==="
+          find . -name "*.png" -type f 2>/dev/null | grep -v node_modules | grep -v .next
+          echo ""
+          echo "=== Checking entire out/ tree ==="
+          find out -type f 2>/dev/null | head -30
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
