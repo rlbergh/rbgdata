@@ -27,7 +27,7 @@ Mapping a 2,650-mile journey required:
 2. **Waypoint information** - Stops along the way with meaningful data
 3. **Supporting metrics** - Context that enriches each location
 
-The data preparation phase was crucial—cleaning geographic coordinates, ensuring consistency, and organizing the data for narrative flow.
+The data preparation phase was crucial — cleaning geographic coordinates, ensuring consistency, and organizing the data for narrative flow.
 
 ## The Challenge
 
@@ -42,27 +42,17 @@ One of the biggest challenges was balancing visual interest with clarity. In geo
 
 ## Key Insights from the Process
 
-### Time Management Matters
-This project took several months—not because it was complex, but because I returned to it periodically. The viz challenge provided the final push to complete it.
-
-### Iteration Drives Quality
-Multiple revisions improved the visualization significantly:
-- First draft: All features, minimal design thinking
-- Second draft: Visual refinement and accessibility review
-- Final version: Polished, accessible, and engaging
-
 ### Maps Tell Stories
 Geographic visualizations have unique power. They can:
 - Show patterns that are invisible in tables
 - Create emotional connection through space
 - Enable exploration and discovery
 
-## Technical Implementation
+### Technical Implementation
 
 The final visualization used:
 - Tableau's native geographic data
-- Custom color palettes matching the brand
-- Interactive filters for different journey segments
+- Interactive buttons to reveal location-specific details
 - Annotations highlighting key insights
 
 ## The Results
@@ -92,5 +82,5 @@ The 2,650 miles traveled in this visualization is just the beginning. What journ
 
 {tableau:https://public.tableau.com/views/Takea2650-milejourneyonthePCT/PCTStart}
 
-**Click the image above to explore the interactive map**
+**Click the image above to explore the interactive visualization**
 

@@ -209,11 +209,15 @@ export default async function BlogPost({ params }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: `
             // Render calculated field components from placeholders
-            document.addEventListener('DOMContentLoaded', function() {
+            function renderCalculatedFields() {
+              console.log('[RBG Data] renderCalculatedFields called');
               const placeholders = document.querySelectorAll('.field-placeholder');
-              placeholders.forEach(function(placeholder) {
+              console.log('[RBG Data] Found', placeholders.length, 'placeholders');
+              
+              placeholders.forEach(function(placeholder, index) {
                 const name = placeholder.getAttribute('data-field-name');
                 const formula = placeholder.getAttribute('data-field-formula');
+                console.log('[RBG Data] Placeholder', index, '- name:', name, 'formula:', formula);
                 
                 if (name && formula) {
                   // Create the field element
@@ -256,8 +260,19 @@ export default async function BlogPost({ params }: PageProps) {
                   fieldDiv.appendChild(pre);
                   
                   placeholder.replaceWith(fieldDiv);
+                  console.log('[RBG Data] Rendered field:', name);
                 }
               });
+            }
+            
+            // Try to render immediately
+            console.log('[RBG Data] Script loaded');
+            renderCalculatedFields();
+            
+            // Also try on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', function() {
+              console.log('[RBG Data] DOMContentLoaded fired');
+              renderCalculatedFields();
             });
           `,
         }}

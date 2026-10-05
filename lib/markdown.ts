@@ -19,8 +19,26 @@ md.renderer.rules.html_inline = function(tokens, idx) {
 };
 
 export function markdownToHtml(markdown: string): string {
-  // Process Tableau URLs: convert {tableau:URL} to markdown image links
+  // Process calculated fields FIRST: convert {field:Name|Formula} to React component calls
   let processed = markdown.replace(
+    /\{field:([^|]+)\|([^\}]+)\}/g,
+    (match, name, formula) => {
+      // Escape the formula for HTML/React - handle newlines and special chars
+      const escapedName = name.trim().replace(/"/g, '&quot;');
+      const escapedFormula = formula
+        .trim()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/\n/g, '&#10;');
+      // Return HTML that will be preserved
+      return `<div data-field-name="${escapedName}" data-field-formula="${escapedFormula}" class="field-placeholder"></div>`;
+    }
+  );
+
+  // Process Tableau URLs: convert {tableau:URL} to markdown image links
+  processed = processed.replace(
     /\{tableau:https:\/\/public\.tableau\.com\/views\/[^\}]+\}/g,
     (match) => {
       const url = match.slice(9, -1); // Extract URL from {tableau:...}
@@ -34,18 +52,6 @@ export function markdownToHtml(markdown: string): string {
     (match) => {
       const url = match.slice(9, -1); // Extract URL from {youtube:...}
       return youtubeUrlToEmbed(url);
-    }
-  );
-
-  // Process calculated fields: convert {field:Name|Formula} to React component calls
-  processed = processed.replace(
-    /\{field:([^|]+)\|([^\}]+)\}/g,
-    (match, name, formula) => {
-      // Escape the formula for HTML/React
-      const escapedName = name.trim();
-      const escapedFormula = formula.trim().replace(/"/g, '&quot;').replace(/\n/g, '&#10;');
-      // Return a placeholder that will be replaced after markdown rendering
-      return `<div data-field-name="${escapedName}" data-field-formula="${escapedFormula}" class="field-placeholder"></div>`;
     }
   );
 

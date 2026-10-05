@@ -46,7 +46,7 @@ Depending on if we have a date that has one digit (or two), we will want to add 
 
 Now we can add all of our strings together and it will give us a nicely sorted list of all the months and days in our data.
 
-{fieldMonth and date|[Add 0 (month)] + STR(MONTH([Full date])) + [Add 0 (day)] + STR(DATEPART('day',[Full date]))}
+{field:Month and date|[Add 0 (month)] + STR(MONTH([Full date])) + [Add 0 (day)] + STR(DATEPART('day',[Full date]))}
 
 ### Step 5: Making the groups
 
