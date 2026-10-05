@@ -1,6 +1,6 @@
 ---
 title: "Understanding Calculated Fields in Tableau"
-date: "2025-01-15"
+date: "2026-10-04"
 excerpt: "Learn how to create and use calculated fields to extend your Tableau analysis with custom formulas."
 author: "Rebecca Bergh"
 tags: ["Tableau", "Formulas", "Tutorial"]
@@ -26,17 +26,18 @@ Here are some common calculated fields you might use:
 
 To create a calculated field in Tableau:
 
-1. Click the dropdown next to any dimension or measure
-2. Select "Create Calculated Field"
+1. Click Analysis on the top menu bar, then select Create Calculated Field... 
+    - Or: `ALT + A + C`
 3. Name your field
 4. Write your formula
 5. Click OK
 
 The formulas use Tableau's calculation language, which includes functions for:
 - **Aggregation**: SUM, AVG, COUNT, MIN, MAX
-- **String functions**: CONCAT, UPPER, LOWER, LEN
+- **String functions**: UPPER, LOWER, LEN, CONTAINS
 - **Date functions**: YEAR, MONTH, DAY, DATEDIFF
 - **Logical functions**: IF, CASE, WHEN
+- **Spatial functions**: MAKEPOINT, MAKELINE, BUFFER, DISTANCE
 
 ## Tips and Tricks
 
