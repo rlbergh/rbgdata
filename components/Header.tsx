@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -13,12 +12,12 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <Link href="/" className="no-underline flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img
-              src={`${basePath}/logo-icon.png`}
+              src="/rbgdata/logo-icon.png"
               alt="RBG Data"
               className="h-12 w-auto"
             />
             <img
-              src={`${basePath}/logo-wordmark.png`}
+              src="/rbgdata/logo-wordmark.png"
               alt="RBG Data"
               className="hidden sm:block h-auto w-32 md:w-40"
             />

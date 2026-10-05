@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getLatestPosts } from '@/lib/posts';
 
 export default async function Home() {
@@ -12,12 +11,9 @@ export default async function Home() {
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <Image
-                src="/logo-primary.png"
+              <img
+                src="/rbgdata/logo-primary.png"
                 alt="RBG Data - Data Visualization, Storytelling, Design"
-                width={600}
-                height={180}
-                priority
                 className="w-full max-w-2xl h-auto mb-8"
               />
               <p className="text-lg mb-6 leading-relaxed">
@@ -36,11 +32,9 @@ export default async function Home() {
                 <div className="absolute -top-8 -right-8 w-32 h-32 bg-coral opacity-10 rounded-none"></div>
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-teal opacity-10 rounded-none"></div>
                 <div className="relative z-10 bg-white p-8 border-l-4 border-teal">
-                  <Image
-                    src="/logo-submark.png"
+                  <img
+                    src="/rbgdata/logo-submark.png"
                     alt="RBG Data methodology"
-                    width={300}
-                    height={300}
                     className="w-64 h-auto mb-6"
                   />
                 </div>
