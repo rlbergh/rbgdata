@@ -8,21 +8,51 @@ tags: ["Tableau", "Data Visualization", "Tutorial"]
 
 ## The Challenge
 
-When you need to create a visualization that goes beyond traditional bar charts and line graphs, Tableau has powerful tools to help. In this project, the challenge was straightforward: how many people of each zodiac sign were born in a specific timeframe?
+What are the use cases for this issue that I solved? Probably just the one I aimed to do (a radial chart showing how many of each zodiac sign were born between 1994 and 2014). But, maybe there's a broader use case for converted dates into zodiac signs. Let me know if you come up with any!
 
-While the question might seem simple, the visualization approach opens up interesting possibilities. A radial or circular chart provides a visually interesting way to display this cyclical data—after all, zodiac signs are tied to calendar months, which are cyclical by nature.
+I've created a video explaining this entire process if that's more useful than having it all written out.
 
 ## The Approach
-
 
 {youtube:https://www.youtube.com/watch?v=BSP-rM2i9kg}
 
 
-### Step 1: Calculate Zodiac Signs from Dates
+### Step 1: Make your date column
 
-First, I needed to convert birth dates into zodiac sign categories. This required a calculated field in Tableau that could determine which sign corresponds to each date.
+If your data (like the one I used) has no true date column, you'll need to start this process by making one. I used the MAKEDATE function to create this calculated field.
 
-The zodiac is based on the date range within the calendar year:
+{field:Full date|MAKEDATE([Year],[Month],[Date Of Month])}
+
+### Step 2: Which months and days are single vs double-digit
+
+This might seem like a weird step for this process, but just trust me, it makes the manual part at the end way easier. What we're going to do is create an IF statement to see whether the month and/day of a particular date is two digits or one. That way we can add some characters before those one-digit numbers so that when we create our zodiac sign group later, it sorts properly and it's way more efficient.
+
+{field:Month digit length|STR(LEN(STR(DATEPART('month',[Full date]))))}
+
+
+{field:Day digit length|STR(LEN(STR(DATEPART('day',[Full date]))))}
+
+So we're finding the day of the Full date, converting it to a string, finding how many characters it is, then converting that number to a string.
+
+### Step 3: IF statement
+
+Depending on if we have a date that has one digit (or two), we will want to add a 0 in front (or not) so that it sorts properly. And don't forget the hyphens. They matter too.
+
+{field:Add 0 (month)|IF [Month digit length] = "1" THEN "-0" ELSE "-" END}
+
+{field:Add 0 (day)|IF [Day digit length] = "1" THEN "-0" ELSE "-" END}
+
+### Step 4: String of month and day
+
+Now we can add all of our strings together and it will give us a nicely sorted list of all the months and days in our data.
+
+{fieldMonth and date|[Add 0 (month)] + STR(MONTH([Full date])) + [Add 0 (day)] + STR(DATEPART('day',[Full date]))}
+
+### Step 5: Making the groups
+
+Finally, we can make our horoscope groups. If you only have 1 year of data, doing all of the previous steps would probably not be necessary since you would be doing the same number of selections on this step. But if you're working with lots of years of data, the previous steps make this step very efficient.
+
+For reference, the zodiac is based on the date range within the calendar year:
 - Aries: March 21 - April 19
 - Taurus: April 20 - May 20
 - Gemini: May 21 - June 20
@@ -36,42 +66,13 @@ The zodiac is based on the date range within the calendar year:
 - Aquarius: January 20 - February 18
 - Pisces: February 19 - March 20
 
-### Step 2: Create the Radial Chart
+Create your group from the new `Month and date` calculated field we made in the last step. Name your group `Zodiac sign` and let your imagination go wild! Let me know if you build anything with it. Below is a radial chart I made from the original data source.
 
-To create a radial (circular) chart in Tableau:
-
-1. **Set up your dimensions**: Use zodiac sign as your dimension
-2. **Set up your measure**: Count of records or sum of population
-3. **Use a circular layout**: By configuring the view with dual axes and polar coordinates
-4. **Add formatting**: Color-code by sign for easy recognition
-
-### Step 3: Filter the Date Range
-
-Apply date filters to show births between 1994 and 2014. This gives us a 20-year snapshot of zodiac distribution.
-
-### See it in action:
+## See it in action:
 
 {tableau:https://public.tableau.com/views/Howpopularisyourbirthday_16389812815230/Howpopularisyourbirthday?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link}
 
-## Key Insights
-
-The resulting visualization reveals interesting patterns:
-- Certain zodiac signs appear more frequently in this dataset
-- The distribution helps us understand seasonal variations in birth dates
-- Visual patterns emerge that wouldn't be as obvious in a traditional bar chart
-
-## Lessons Learned
-
-1. **Circular visualizations work well for cyclical data** - Zodiac signs map naturally to a circular layout because they represent the calendar year
-2. **Date calculations are powerful in Tableau** - With the right formula, you can categorize dates in creative ways
-3. **Design matters** - Color-coding by zodiac element (fire, earth, air, water) adds another layer of meaning
 
 ## Next Steps
-
-Consider extending this analysis:
-- Compare zodiac distributions across different time periods
-- Analyze by geographic location
-- Combine with other demographic data
-- Create an interactive dashboard that lets users explore different date ranges
 
 This technique of converting dates into meaningful categories can be applied to many different scenarios in your own data visualization work!

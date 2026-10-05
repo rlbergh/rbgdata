@@ -98,21 +98,110 @@ a:hover {
   @apply bg-coral;
 }
 
-/* Buttons */
-.btn {
-  @apply px-6 py-3 font-bold transition-all duration-200 no-underline inline-block;
+/* Calculated Field Component */
+.calculated-field {
+  background: linear-gradient(135deg, #25282A 0%, #1f1f23 100%);
+  border-left: 4px solid #D6a84B;
+  border-radius: 4px;
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary {
-  @apply bg-teal text-cream hover:bg-charcoal;
+.calculated-field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(214, 168, 75, 0.3);
+  gap: 1rem;
 }
 
-.btn-secondary {
-  @apply border-2 border-teal text-teal hover:bg-teal hover:text-cream;
+.calculated-field-name {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-weight: 700;
+  color: #D6a84B;
+  font-size: 1rem;
+  flex: 1;
 }
 
-.btn-coral {
-  @apply bg-coral text-cream hover:bg-charcoal;
+.calculated-field-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #174F5B;
+  color: #F7F1E7;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.calculated-field-copy-btn:hover {
+  background: #E56B52;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(229, 107, 82, 0.3);
+}
+
+.calculated-field-copy-btn:active {
+  transform: translateY(0);
+}
+
+.copy-icon {
+  font-size: 1rem;
+}
+
+.copy-text {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .copy-text {
+    display: inline;
+  }
+}
+
+.calculated-field-formula {
+  margin: 0;
+  padding: 1.5rem;
+  background: #25282A;
+  color: #F7F1E7;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.calculated-field-formula code {
+  background: none;
+  color: #F7F1E7;
+  padding: 0;
+  border-radius: 0;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: inherit;
+}
+
+/* Syntax highlighting for Tableau formula parts */
+.calculated-field-formula {
+  /* Keywords in coral */
+  background: #25282A;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .calculated-field-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calculated-field-copy-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Section spacing */

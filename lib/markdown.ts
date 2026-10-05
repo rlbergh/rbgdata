@@ -37,5 +37,17 @@ export function markdownToHtml(markdown: string): string {
     }
   );
 
+  // Process calculated fields: convert {field:Name|Formula} to React component calls
+  processed = processed.replace(
+    /\{field:([^|]+)\|([^\}]+)\}/g,
+    (match, name, formula) => {
+      // Escape the formula for HTML/React
+      const escapedName = name.trim();
+      const escapedFormula = formula.trim().replace(/"/g, '&quot;').replace(/\n/g, '&#10;');
+      // Return a placeholder that will be replaced after markdown rendering
+      return `<div data-field-name="${escapedName}" data-field-formula="${escapedFormula}" class="field-placeholder"></div>`;
+    }
+  );
+
   return md.render(processed);
 }
