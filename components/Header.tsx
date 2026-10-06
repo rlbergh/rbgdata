@@ -28,6 +28,9 @@ export default function Header() {
             <Link href="/blog" className="text-charcoal hover:text-coral transition-colors">
               Blog
             </Link>
+            <Link href="/shop" className="text-charcoal hover:text-coral transition-colors">
+              Shop
+            </Link>
             <Link href="/about" className="text-charcoal hover:text-coral transition-colors">
               About
             </Link>
@@ -74,6 +77,13 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Blog
+            </Link>
+            <Link
+              href="/shop"
+              className="text-charcoal hover:text-coral transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Shop
             </Link>
             <Link
               href="/about"

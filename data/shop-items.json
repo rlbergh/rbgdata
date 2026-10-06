@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Tableau Desktop",
+    "link": "https://www.tableau.com/products/desktop",
+    "price": 70,
+    "salePrice": null,
+    "image": "/rbgdata/shop/tableau-desktop.png",
+    "store": "Tableau",
+    "description": "Professional data visualization and analytics software for creating interactive dashboards.",
+    "category": "Software"
+  },
+  {
+    "id": 2,
+    "title": "Data Visualization Best Practices",
+    "link": "https://www.amazon.com/s?k=data+visualization",
+    "price": 45,
+    "salePrice": 34.99,
+    "image": "/rbgdata/shop/data-viz-book.png",
+    "store": "Amazon",
+    "description": "Essential guide to creating clear, compelling data visualizations that tell meaningful stories.",
+    "category": "Books"
+  },
+  {
+    "id": 3,
+    "title": "Color Accessibility Checker",
+    "link": "https://webaim.org/resources/contrastchecker/",
+    "price": 0,
+    "salePrice": null,
+    "image": "/rbgdata/shop/webaim.png",
+    "store": "WebAIM",
+    "description": "Free online tool to check color contrast ratios for accessibility compliance (WCAG standards).",
+    "category": "Tools"
+  }
+]
