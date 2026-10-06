@@ -112,7 +112,7 @@ export default function AboutPage() {
       <section className="section bg-cream">
         <div className="container-max max-w-3xl">
           <div className="recognition-section">
-            <h2 className="recognition-title">Recognition</h2>
+            <h2 className="recognition-title">Noteworthy recognition</h2>
             {recognitions.length > 0 ? (
               <div className="recognition-list">
                 {recognitions.map((recognition, index) => (
