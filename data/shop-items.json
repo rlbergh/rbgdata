@@ -1,35 +1,35 @@
 [
   {
     "id": 1,
-    "title": "Tableau Desktop",
-    "link": "https://www.tableau.com/products/desktop",
-    "price": 70,
+    "title": "Data Journal: Wellness",
+    "link": "https://www.amazon.com/dp/B095HSB466/",
+    "price": 14.98,
     "salePrice": null,
-    "image": "/rbgdata/shop/tableau-desktop.png",
-    "store": "Tableau",
-    "description": "Professional data visualization and analytics software for creating interactive dashboards.",
-    "category": "Software"
+    "image": "/rbgdata/shop/cover-beach.png",
+    "store": "Amazon",
+    "description": "You might already have a device that tracks your fitness data for you — but do you ever actually look at it? How easy is it to compare a statistic you really care about over an entire month or even year? This data journal puts you back in control of your health and fitness data. Track fitness stats like miles walked or minutes danced, your sleep and even your water intake. Working on forming healthy habits? You can track that, too, with this data journal.",
+    "category": "Data Journal"
   },
   {
     "id": 2,
-    "title": "Data Visualization Best Practices",
-    "link": "https://www.amazon.com/s?k=data+visualization",
-    "price": 45,
-    "salePrice": 34.99,
-    "image": "/rbgdata/shop/data-viz-book.png",
+    "title": "Data Journal: Pregnancy",
+    "link": "https://www.amazon.com/dp/B09NRN4V4K",
+    "price": 24.99,
+    "salePrice": null,
+    "image": "/rbgdata/shop/cover.jpg",
     "store": "Amazon",
-    "description": "Essential guide to creating clear, compelling data visualizations that tell meaningful stories.",
-    "category": "Books"
+    "description": "This hardcover journal doubles as a keepsake once your baby is earthside. It includes some basic information about how big your baby is getting week to week and ways for you to capture your pregnancy in a new, healthy and fun way. I specifically designed this journal knowing that a lot of aspects of pregnancy can be very hard, with a lot of unknowns and a lot of “should” and “should nots.” Instead of focusing on things like body weight and food, I added a lot of areas for qualitative data so you don’t dwell on things out of your control (hello, morning sickness!). Once the baby is born, you can create a very cool radial chart using the data you’ve been collecting about the size of your bump and the external temperature of where you live — sort of like a chart that says “these are conditions in which this bun was baked.",
+    "category": "Data Journal"
   },
   {
     "id": 3,
-    "title": "Color Accessibility Checker",
-    "link": "https://webaim.org/resources/contrastchecker/",
-    "price": 0,
+    "title": "Chance & Choice: A 300-Day Progressive Writing Journal",
+    "link": "https://www.amazon.com/Chance-Choice-300-Day-Progressive-Writing/dp/B0GDFFBHC9/",
+    "price": 14.95,
     "salePrice": null,
-    "image": "/rbgdata/shop/webaim.png",
-    "store": "WebAIM",
-    "description": "Free online tool to check color contrast ratios for accessibility compliance (WCAG standards).",
-    "category": "Tools"
+    "image": "/rbgdata/shop/chance-choice.jpg",
+    "store": "Amazon",
+    "description": "Gamify your writing habits with a guided journal designed to gently lead you into deeper reflection.",
+    "category": "Writing Journal"
   }
 ]
