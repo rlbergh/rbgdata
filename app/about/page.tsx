@@ -28,18 +28,7 @@ export default function AboutPage() {
                 problem, <span className="text-coral font-bold">Build</span> the solution, and{' '}
                 <span className="text-coral font-bold">Validate</span> the result.
               </p>
-              <p className="mb-4">
-                I believe that good data visualization is more than just making charts look nice — it's about
-                making information accessible to everyone. I'm not an expert on all things data viz, there's 
-                still much for me to learn. I would argue we are all still learning and there's always 
-                something new to explore in the world of data visualization.
-              </p>
-              <p className="mb-4">My other hobbies include backpacking, photography, plant-keeping, graphic design 
-                and trying most crafty things. 
-              </p>
-              <p className="mb-4">
-                I hope to share my knowledge and passion for data through tutorials, tips, and resources.
-              </p>
+              
             </div>
 
             <div className="bg-cream p-8 border-l-4 border-coral">
@@ -64,7 +53,20 @@ export default function AboutPage() {
               </ul>
             </div>
           </div>
-
+          <div className="container-max">
+            <p className="mb-4">
+                I believe that good data visualization is more than just making charts look nice — it's about
+                making information accessible to everyone. I'm not an expert on all things data viz, there's 
+                still much for me to learn. I would argue we are all still learning and there's always 
+                something new to explore in the world of data visualization.
+            </p>
+            <p className="mb-4">My other hobbies include backpacking, photography, plant-keeping, graphic design 
+                and trying most crafty things. 
+            </p>
+            <p className="mb-4">
+                I hope to share my knowledge and passion for data through tutorials, tips, and resources.
+            </p>
+          </div>
 
           <div className="methodology-section">
             <h2 className="methodology-title">Methodology</h2>
