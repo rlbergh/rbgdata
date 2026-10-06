@@ -1,5 +1,19 @@
 import Link from 'next/link';
 
+interface Recognition {
+  year: number;
+  title: string;
+  link?: string;
+}
+
+const recognitions: Recognition[] = [
+  {year: 2026, title: "Tableau Ambassador"},
+  {year: 2026, title: "Tableau Data Analyst Certified"},
+  {year: 2025, title: "Lead author on 'Driving Change: Motivations and Barriers to Electric Vehicle Adoption'", link: "https://bmrajournal.columbiasouthern.edu/index.php/bmra/article/view/10215/9303"},
+  {year: 2022, title: "Instructional Assistant Award", link: "https://www.pce.uw.edu/news-features/articles/2022-instructional-excellence-awards"},
+  {year: 2017, title: "CASE Circle of Excellence GOLD Award"},
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -28,6 +42,18 @@ export default function AboutPage() {
                 problem, <span className="text-coral font-bold">Build</span> the solution, and{' '}
                 <span className="text-coral font-bold">Validate</span> the result.
               </p>
+              <p className="mb-4">
+                I believe that good data visualization is more than just making charts look nice — it's about
+                making information accessible to everyone. I'm not an expert on all things data viz, there's 
+                still much for me to learn. I would argue we are all still learning and there's always 
+                something new to explore in the world of data visualization.
+              </p>
+              <p className="mb-4">My other hobbies include backpacking, photography, plant-keeping, graphic design 
+                and trying most crafty things. 
+              </p>
+              <p className="mb-4">
+                I hope to share my knowledge and passion for data through tutorials, tips, and resources.
+              </p>
               
             </div>
 
@@ -52,20 +78,6 @@ export default function AboutPage() {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="container-max">
-            <p className="mb-4">
-                I believe that good data visualization is more than just making charts look nice — it's about
-                making information accessible to everyone. I'm not an expert on all things data viz, there's 
-                still much for me to learn. I would argue we are all still learning and there's always 
-                something new to explore in the world of data visualization.
-            </p>
-            <p className="mb-4">My other hobbies include backpacking, photography, plant-keeping, graphic design 
-                and trying most crafty things. 
-            </p>
-            <p className="mb-4">
-                I hope to share my knowledge and passion for data through tutorials, tips, and resources.
-            </p>
           </div>
 
           <div className="methodology-section">
@@ -98,6 +110,34 @@ export default function AboutPage() {
       </section>
 
       <section className="section bg-cream">
+        <div className="container-max max-w-3xl">
+          <div className="recognition-section">
+            <h2 className="recognition-title">Recognition</h2>
+            {recognitions.length > 0 ? (
+              <div className="recognition-list">
+                {recognitions.map((recognition, index) => (
+                  <div key={index} className="recognition-item">
+                    <div className="recognition-year">{recognition.year}</div>
+                    <div className="recognition-content">
+                      {recognition.link ? (
+                        <a href={recognition.link} target="_blank" rel="noopener noreferrer" className="recognition-title-link">
+                          {recognition.title}
+                        </a>
+                      ) : (
+                        <span className="recognition-title-text">{recognition.title}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-charcoal italic">Awards and recognitions will be featured here.</p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-white">
         <div className="container-max text-center">
           <h2 className="text-teal mb-6">Let's Connect</h2>
           <p className="text-lg text-charcoal mb-8 max-w-2xl mx-auto">

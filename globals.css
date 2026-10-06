@@ -273,6 +273,76 @@ a:hover {
   }
 }
 
+/* Recognition Section */
+.recognition-section {
+  background: #f7f1e7;
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid #174f5b;
+}
+
+.recognition-title {
+  color: #25282a;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.recognition-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.recognition-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.recognition-year {
+  font-weight: 700;
+  color: #D6a84B;
+  min-width: 60px;
+  font-size: 1.125rem;
+}
+
+.recognition-content {
+  flex: 1;
+}
+
+.recognition-title-link {
+  color: #174f5b;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.recognition-title-link:hover {
+  border-bottom-color: #D6a84B;
+}
+
+.recognition-title-text {
+  color: #25282a;
+  font-weight: 600;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .recognition-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .recognition-year {
+    min-width: auto;
+  }
+}
+
 /* Focus states for accessibility */
 a:focus-visible,
 button:focus-visible {
