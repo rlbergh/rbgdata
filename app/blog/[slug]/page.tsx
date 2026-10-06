@@ -125,13 +125,23 @@ export default async function BlogPost({ params }: PageProps) {
 
         .prose-content ul,
         .prose-content ol {
-          margin-left: 2em;
+          margin-left: 2.5em;
           margin-bottom: 1em;
+          padding-left: 0;
+        }
+
+        .prose-content ul {
+          list-style-type: disc;
+        }
+
+        .prose-content ol {
+          list-style-type: decimal;
         }
 
         .prose-content li {
           margin-bottom: 0.5em;
           color: #25282a;
+          margin-left: 0;
         }
 
         .prose-content code {
@@ -203,6 +213,83 @@ export default async function BlogPost({ params }: PageProps) {
         @media (max-width: 768px) {
           .prose-content-wrapper {
             padding: 0 1rem;
+          }
+        }
+
+        /* Image with caption helper */
+        .figure {
+          margin: 2rem 0;
+          display: flex;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+
+        .figure.figure-left {
+          flex-direction: row;
+        }
+
+        .figure.figure-right {
+          flex-direction: row-reverse;
+        }
+
+        .figure.figure-top {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .figure.figure-bottom {
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+
+        .figure-image {
+          flex-shrink: 0;
+        }
+
+        .figure.figure-left .figure-image,
+        .figure.figure-right .figure-image {
+          max-width: 40%;
+          min-width: 250px;
+        }
+
+        .figure.figure-top .figure-image,
+        .figure.figure-bottom .figure-image {
+          max-width: 100%;
+        }
+
+        .figure-image img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          border: 1px solid #e56b52;
+          margin: 0;
+        }
+
+        .figure-caption {
+          font-size: 0.9rem;
+          color: #666;
+          font-style: italic;
+          line-height: 1.6;
+        }
+
+        .figure.figure-top .figure-caption,
+        .figure.figure-bottom .figure-caption {
+          text-align: center;
+          max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+          .figure {
+            flex-direction: column-reverse !important;
+            gap: 1rem;
+          }
+
+          .figure-image {
+            max-width: 100% !important;
+          }
+
+          .figure-caption {
+            text-align: center;
           }
         }
       `}</style>

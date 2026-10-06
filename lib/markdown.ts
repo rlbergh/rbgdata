@@ -19,8 +19,29 @@ md.renderer.rules.html_inline = function(tokens, idx) {
 };
 
 export function markdownToHtml(markdown: string): string {
-  // Process calculated fields FIRST: convert {field:Name|Formula} to HTML components
+  // Process image/caption figures FIRST: {fig:src|alt|caption|position}
   let processed = markdown.replace(
+    /\{fig:([^|]+)\|([^|]*)\|([^|]*)\|([^}]+)\}/g,
+    (match, src, alt, caption, position) => {
+      const cleanSrc = src.trim();
+      const cleanAlt = alt.trim();
+      const cleanCaption = caption.trim();
+      const cleanPosition = position.trim().toLowerCase();
+      
+      const validPositions = ['left', 'right', 'top', 'bottom'];
+      const pos = validPositions.includes(cleanPosition) ? cleanPosition : 'bottom';
+      
+      return `<figure class="figure figure-${pos}">
+  <div class="figure-image">
+    <img src="${cleanSrc}" alt="${cleanAlt.replace(/"/g, '&quot;')}" />
+  </div>
+  <figcaption class="figure-caption">${cleanCaption}</figcaption>
+</figure>`;
+    }
+  );
+
+  // Process calculated fields: convert {field:Name|Formula} to HTML components
+  processed = processed.replace(
     /\{field:([^|]+)\|([^\}]+)\}/g,
     (match, name, formula) => {
       // Escape the formula for HTML - handle special chars but NOT entities (we want raw HTML)
