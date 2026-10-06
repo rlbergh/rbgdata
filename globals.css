@@ -218,6 +218,61 @@ a:hover {
   @apply max-w-7xl mx-auto;
 }
 
+/* Methodology Section */
+.methodology-section {
+  background: #25282a;
+  color: #f7f1e7;
+  padding: 3rem;
+  border-radius: 10px;
+}
+
+.methodology-title {
+  color: #f7f1e7;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.methodology-card {
+  border: 1px dashed #174f5b;
+  border-radius: 20px;
+  padding: 1.25rem;
+  margin-top: 0;
+}
+
+.methodology-card-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.methodology-card p {
+  margin: 0;
+  color: #f7f1e7;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .methodology-section {
+    padding: 2rem;
+  }
+
+  .methodology-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 /* Focus states for accessibility */
 a:focus-visible,
 button:focus-visible {

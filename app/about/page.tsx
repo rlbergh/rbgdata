@@ -29,8 +29,16 @@ export default function AboutPage() {
                 <span className="text-coral font-bold">Validate</span> the result.
               </p>
               <p className="mb-4">
-                I believe that good data visualization is more than just making charts look nice—it's about
-                making information accessible to everyone, including people using assistive technologies.
+                I believe that good data visualization is more than just making charts look nice — it's about
+                making information accessible to everyone. I'm not an expert on all things data viz, there's 
+                still much for me to learn. I would argue we are all still learning and there's always 
+                something new to explore in the world of data visualization.
+              </p>
+              <p className="mb-4">My other hobbies include backpacking, photography, plant-keeping, graphic design 
+                and trying most crafty things. 
+              </p>
+              <p className="mb-4">
+                I hope to share my knowledge and passion for data through tutorials, tips, and resources.
               </p>
             </div>
 
@@ -38,7 +46,7 @@ export default function AboutPage() {
               <h3 className="text-coral font-black mb-4">Core Values</h3>
               <ul className="space-y-3">
                 <li className="flex gap-3">
-                  <span className="text-coral font-bold">▪</span>
+                  <span className="text-teal font-bold">▪</span>
                   <span>Accessibility First</span>
                 </li>
                 <li className="flex gap-3">
@@ -46,60 +54,37 @@ export default function AboutPage() {
                   <span>Clear Communication</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-gold font-bold">▪</span>
+                  <span className="text-teal font-bold">▪</span>
                   <span>Thoughtful Design</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-coral font-bold">▪</span>
+                  <span className="text-teal font-bold">▪</span>
                   <span>Continuous Learning</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t-2 border-coral pt-12 mb-12">
-            <h2 className="text-teal mb-6">Expertise</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-coral font-bold mb-3">Technical Skills</h3>
-                <ul className="space-y-2 text-charcoal">
-                  <li>✓ Tableau visualization & design</li>
-                  <li>✓ Data analysis & storytelling</li>
-                  <li>✓ Accessibility (WCAG, screen readers)</li>
-                  <li>✓ Interactive design patterns</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-teal font-bold mb-3">Specialties</h3>
-                <ul className="space-y-2 text-charcoal">
-                  <li>✓ Dashboard design & usability</li>
-                  <li>✓ Data visualization tutorials</li>
-                  <li>✓ Accessibility audits</li>
-                  <li>✓ Creative data stories</li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
-          <div className="bg-charcoal text-cream p-12 rounded-none">
-            <h2 className="text-coral mb-4">The Frame → Build → Validate Methodology</h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-coral font-bold mb-2">🎯 Frame the Problem</h3>
+          <div className="methodology-section">
+            <h2 className="methodology-title">Methodology</h2>
+            <div className="methodology-grid">
+              <div className="methodology-card">
+                <h3 className="methodology-card-title text-coral">Frame the Problem</h3>
                 <p>
                   Start with clear questions: What decision needs to be made? Who is the audience? What data
                   tells the story? A well-framed problem is half solved.
                 </p>
               </div>
-              <div>
-                <h3 className="text-gold font-bold mb-2">🔨 Build the Solution</h3>
+              <div className="methodology-card">
+                <h3 className="methodology-card-title text-gold">Build the Solution</h3>
                 <p>
                   Design and develop visualizations with intention. Consider accessibility from the start,
                   use clean design principles, and prioritize user experience.
                 </p>
               </div>
-              <div>
-                <h3 className="text-coral font-bold mb-2">✓ Validate the Result</h3>
+              <div className="methodology-card">
+                <h3 className="methodology-card-title text-coral">Validate the Result</h3>
                 <p>
                   Test with real users. Does the visualization answer the question? Is it accessible? Can
                   different audiences understand the insight? Iterate based on feedback.
