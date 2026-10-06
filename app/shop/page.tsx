@@ -12,7 +12,7 @@ export default function ShopPage() {
         <div className="container-max">
           <h1 className="text-teal mb-4">Shop</h1>
           <p className="text-lg text-charcoal max-w-2xl">
-            Curated tools, books, and resources to help you create better data visualizations and dashboards.
+            These tools have been designed with thought and purpose. From keepsakes to analog health-tracking, they are meant to help you focus on truly dvisualizing data and advancing your skillsets.
           </p>
         </div>
       </section>
@@ -31,10 +31,9 @@ export default function ShopPage() {
       {/* CTA Section */}
       <section className="section bg-cream border-t-4 border-teal">
         <div className="container-max text-center">
-          <h2 className="text-teal mb-6">More Recommendations Coming Soon</h2>
+          <h2 className="text-teal mb-6">More Coming Soon</h2>
           <p className="text-charcoal mb-8 max-w-2xl mx-auto">
-            Have a tool or resource you think belongs here? Feel free to reach out—I'm always looking for quality
-            products that help with data visualization and accessibility.
+            I've spent the last several years designing and developing these and other tools. Check back here in the future for more.
           </p>
           <Link href="/about" className="btn btn-primary">
             Get In Touch
