@@ -19,7 +19,7 @@ export default function AboutPage() {
             <div className="md:col-span-2">
               <h2 className="text-teal mb-6">Who I Am</h2>
               <p className="mb-4">
-                I'm Rebecca Bergh, a data visualization specialist passionate about making data accessible,
+                I'm Rebecca Bergh, a business intelligence analyst passionate about making data accessible,
                 understandable, and beautiful. With a focus on Tableau and interactive design, I help teams
                 tell compelling stories with their data.
               </p>
