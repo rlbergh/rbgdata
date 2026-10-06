@@ -95,11 +95,7 @@ export default async function Home() {
                 Visit YouTube Channel
               </a>
             </div>
-            <div className="bg-charcoal rounded-none p-12 text-center">
-              <p className="text-cream text-sm">
-                🎬 Subscribe for weekly data visualization and analysis content
-              </p>
-            </div>
+            
           </div>
         </div>
       </section>
