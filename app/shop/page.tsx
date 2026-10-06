@@ -165,10 +165,10 @@ export default function ShopPage() {
         }
 
         .shop-item-category {
-          background: #174f5b;
-          background-opacity: 0.15;
+          background: white;
           color: #174f5b;
-          padding: 0.4rem 0.75rem;
+          border: 1px solid #174f5b;
+          padding: 0.5rem 0.75rem;
           border-radius: 3px;
           font-size: 0.8rem;
           font-weight: 600;

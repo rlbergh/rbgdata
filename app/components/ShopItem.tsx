@@ -25,11 +25,14 @@ export default function ShopItem({
 }: ShopItemProps) {
   const hasSale = salePrice !== null && salePrice !== undefined && salePrice < price;
   const savings = hasSale ? Math.round(((price - salePrice) / price) * 100) : 0;
+  
+  // Ensure image path has the /rbgdata prefix for GitHub Pages
+  const imagePath = image.startsWith('/rbgdata') ? image : `/rbgdata${image}`;
 
   return (
     <div className="shop-item">
       <div className="shop-item-image">
-        <img src={image} alt={title} />
+        <img src={imagePath} alt={title} />
         {hasSale && <div className="sale-badge">{savings}% OFF</div>}
       </div>
 
