@@ -246,10 +246,24 @@ export default async function BlogPost({ params }: PageProps) {
           flex-shrink: 0;
         }
 
+        /* Width classes for left/right positioned figures */
         .figure.figure-left .figure-image,
         .figure.figure-right .figure-image {
-          max-width: 40%;
-          min-width: 250px;
+          min-width: 200px;
+        }
+
+        .figure.figure-width-full .figure-image,
+        .figure.figure-top.figure-width-full .figure-image,
+        .figure.figure-bottom.figure-width-full .figure-image {
+          max-width: 100%;
+        }
+
+        .figure.figure-width-half .figure-image {
+          max-width: 50%;
+        }
+
+        .figure.figure-width-third .figure-image {
+          max-width: 33.333%;
         }
 
         .figure.figure-top .figure-image,

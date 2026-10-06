@@ -58,7 +58,7 @@ This is one of the most basic pieces of web accessibility but it’s important t
 - Don't start it with "image of..." (the screen reader will do that)
 - Type out any text you have embedded in the image
 
-{fig:/rbgdata/lake-mountain.png|Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|Alt text: Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|left}
+{fig:/rbgdata/lake-mountain.png|Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|Alt text: Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|left|half}
 
 ### 5. Use Sufficient Color Contrast
 

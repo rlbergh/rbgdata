@@ -19,19 +19,22 @@ md.renderer.rules.html_inline = function(tokens, idx) {
 };
 
 export function markdownToHtml(markdown: string): string {
-  // Process image/caption figures FIRST: {fig:src|alt|caption|position}
+  // Process image/caption figures FIRST: {fig:src|alt|caption|position|width}
   let processed = markdown.replace(
-    /\{fig:([^|]+)\|([^|]*)\|([^|]*)\|([^}]+)\}/g,
-    (match, src, alt, caption, position) => {
+    /\{fig:([^|]+)\|([^|]*)\|([^|]*)\|([^|]+)(?:\|([^}]+))?\}/g,
+    (match, src, alt, caption, position, width) => {
       const cleanSrc = src.trim();
       const cleanAlt = alt.trim();
       const cleanCaption = caption.trim();
       const cleanPosition = position.trim().toLowerCase();
+      const cleanWidth = (width || 'half').trim().toLowerCase();
       
       const validPositions = ['left', 'right', 'top', 'bottom'];
+      const validWidths = ['full', 'half', 'third'];
       const pos = validPositions.includes(cleanPosition) ? cleanPosition : 'bottom';
+      const w = validWidths.includes(cleanWidth) ? cleanWidth : 'half';
       
-      return `<figure class="figure figure-${pos}">
+      return `<figure class="figure figure-${pos} figure-width-${w}">
   <div class="figure-image">
     <img src="${cleanSrc}" alt="${cleanAlt.replace(/"/g, '&quot;')}" />
   </div>
