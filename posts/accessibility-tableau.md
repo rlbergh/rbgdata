@@ -58,10 +58,7 @@ This is one of the most basic pieces of web accessibility but it’s important t
 - Don't start it with "image of..." (the screen reader will do that)
 - Type out any text you have embedded in the image
 
->Example:
-<img src="/rbgdata/lake-mountain.png" alt="Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background." style="float: left; width: 350px; margin-right: 20px;">
->Alt text: Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background.
-
+{fig:/rbgdata/lake-mountain.png|Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|Alt text: Yellow fall foliage in foreground with a vibrant blue lake below a couple of tree-covered mountains in the background|right}
 
 ### 5. Use Sufficient Color Contrast
 
