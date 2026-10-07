@@ -32,9 +32,9 @@ const PRESET_PALETTES = {
     colors: ['#e7f4f5', '#b3d9e1', '#7eb3cc', '#4682a9', '#1e4d7b'],
     description: 'Safe for color blindness, works in grayscale'
   },
-  'Vibrant Diverging': {
-    colors: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e'],
-    description: 'Good contrast, distinguishable for color-blind'
+  'Okabe-Ito (Color-Blind Safe)': {
+    colors: ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7'],
+    description: 'Scientifically optimized for all color vision types'
   },
   'Grayscale': {
     colors: ['#ffffff', '#cccccc', '#999999', '#666666', '#000000'],
