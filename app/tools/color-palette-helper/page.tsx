@@ -14,6 +14,7 @@ interface ContrastResult {
   ratio: number;
   wcagAA: boolean;
   wcagAAA: boolean;
+  recommendation: 'black' | 'white';
 }
 
 interface ColorBlindSimulation {
@@ -128,6 +129,17 @@ export default function ColorPaletteHelper() {
     return (lighter + 0.05) / (darker + 0.05);
   };
 
+  // Determine if black or white is better for a color
+  const getBestTextColor = (rgb: { r: number; g: number; b: number }): 'black' | 'white' => {
+    const blackRgb = { r: 0, g: 0, b: 0 };
+    const whiteRgb = { r: 255, g: 255, b: 255 };
+    
+    const blackContrast = getContrastRatio(rgb, blackRgb);
+    const whiteContrast = getContrastRatio(rgb, whiteRgb);
+    
+    return blackContrast > whiteContrast ? 'black' : 'white';
+  };
+
   // Simulate color blindness
   const simulateColorBlindness = (rgb: { r: number; g: number; b: number }): ColorBlindSimulation => {
     const { r, g, b } = rgb;
@@ -200,6 +212,7 @@ export default function ColorPaletteHelper() {
           ratio: parseFloat(ratio.toFixed(2)),
           wcagAA: ratio >= 4.5,
           wcagAAA: ratio >= 7,
+          recommendation: getBestTextColor(palette[i].rgb),
         });
       }
     }
@@ -246,10 +259,10 @@ export default function ColorPaletteHelper() {
       </section>
 
       <section className="section bg-white">
-        <div className="container-max max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* Input Section */}
-            <div className="palette-input-section">
+        <div className="container-max max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {/* Input Section - Left */}
+            <div className="lg:col-span-1 palette-input-section">
               <h2 className="text-xl font-bold text-teal mb-4">Add Colors</h2>
 
               {/* Presets */}
@@ -379,176 +392,175 @@ export default function ColorPaletteHelper() {
               )}
             </div>
 
-            {/* Analysis Section */}
-            {colors.length > 0 && (
-              <div className="palette-analysis-section">
-                <h2 className="text-xl font-bold text-teal mb-4">Palette Analysis</h2>
+            {/* Color Blindness Simulations - Right */}
+            {colors.length > 0 && Object.keys(colorBlindResults).length > 0 && (
+              <div className="lg:col-span-2 palette-colorblind-section">
+                <h2 className="text-xl font-bold text-teal mb-4">Color Blindness Simulations</h2>
+                <p className="text-sm text-gray-700 mb-6">
+                  How your palette appears to people with different types of color vision deficiency.
+                </p>
 
-                {/* Contrast Summary */}
-                <div className="mb-6">
-                  <h3 className="font-semibold text-charcoal mb-3">Contrast Ratios</h3>
-                  <div className="space-y-2 max-h-64 overflow-y-auto">
-                    {contrastResults.length > 0 ? (
-                      contrastResults.map((result, idx) => (
+                <div className="space-y-6">
+                  {/* Original */}
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-2">Normal Vision</h3>
+                    <div className="flex gap-2">
+                      {colors.map((color) => (
                         <div
-                          key={idx}
-                          className="p-3 bg-gray-50 rounded border-l-4 border-gray-300"
-                        >
-                          <div className="flex items-center gap-2 mb-2">
-                            <div
-                              className="w-4 h-4 rounded"
-                              style={{ backgroundColor: result.color1 }}
-                            />
-                            <span className="text-xs text-gray-600">vs</span>
-                            <div
-                              className="w-4 h-4 rounded"
-                              style={{ backgroundColor: result.color2 }}
-                            />
-                            <span className="text-xs font-mono text-charcoal flex-1">
-                              {result.ratio}:1
-                            </span>
-                          </div>
-                          <div className="flex gap-2 text-xs">
-                            {result.wcagAAA && (
-                              <span className="px-2 py-1 bg-green-100 text-green-800 rounded">
-                                WCAG AAA
-                              </span>
-                            )}
-                            {result.wcagAA && !result.wcagAAA && (
-                              <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded">
-                                WCAG AA
-                              </span>
-                            )}
-                            {!result.wcagAA && (
-                              <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded">
-                                Needs Work
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-sm text-gray-600">Add at least 2 colors to see contrast results.</p>
-                    )}
+                          key={color.hex}
+                          className="flex-1 h-12 rounded border-2 border-gray-300"
+                          style={{ backgroundColor: color.hex }}
+                          title={color.hex}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Accessibility Notes */}
-                <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-400">
-                  <p className="text-xs font-semibold text-blue-900 mb-1">Accessibility Tips</p>
-                  <ul className="text-xs text-blue-800 space-y-1">
-                    <li>• WCAG AAA (7:1) is best for text</li>
-                    <li>• WCAG AA (4.5:1) is minimum for accessibility</li>
-                    <li>• Check color blindness simulations below</li>
-                  </ul>
+                  {/* Protanopia */}
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-2">Protanopia (Red-Blind)</h3>
+                    <div className="text-xs text-gray-600 mb-2">~1% of males affected</div>
+                    <div className="flex gap-2">
+                      {colors.map((color) => (
+                        <div
+                          key={color.hex}
+                          className="flex-1 h-12 rounded border-2 border-gray-300"
+                          style={{
+                            backgroundColor:
+                              colorBlindResults[color.hex]?.protanopia || color.hex,
+                          }}
+                          title={colorBlindResults[color.hex]?.protanopia}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Deuteranopia */}
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-2">Deuteranopia (Green-Blind)</h3>
+                    <div className="text-xs text-gray-600 mb-2">~1% of males affected</div>
+                    <div className="flex gap-2">
+                      {colors.map((color) => (
+                        <div
+                          key={color.hex}
+                          className="flex-1 h-12 rounded border-2 border-gray-300"
+                          style={{
+                            backgroundColor:
+                              colorBlindResults[color.hex]?.deuteranopia || color.hex,
+                          }}
+                          title={colorBlindResults[color.hex]?.deuteranopia}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tritanopia */}
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-2">Tritanopia (Blue-Blind)</h3>
+                    <div className="text-xs text-gray-600 mb-2">~0.001% of population affected</div>
+                    <div className="flex gap-2">
+                      {colors.map((color) => (
+                        <div
+                          key={color.hex}
+                          className="flex-1 h-12 rounded border-2 border-gray-300"
+                          style={{
+                            backgroundColor:
+                              colorBlindResults[color.hex]?.tritanopia || color.hex,
+                          }}
+                          title={colorBlindResults[color.hex]?.tritanopia}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Achromatopsia */}
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-2">Achromatopsia (Complete)</h3>
+                    <div className="text-xs text-gray-600 mb-2">Grayscale vision (~0.0001%)</div>
+                    <div className="flex gap-2">
+                      {colors.map((color) => (
+                        <div
+                          key={color.hex}
+                          className="flex-1 h-12 rounded border-2 border-gray-300"
+                          style={{
+                            backgroundColor:
+                              colorBlindResults[color.hex]?.achromatopsia || color.hex,
+                          }}
+                          title={colorBlindResults[color.hex]?.achromatopsia}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Color Blindness Simulations */}
-          {colors.length > 0 && Object.keys(colorBlindResults).length > 0 && (
-            <div className="palette-colorblind-section">
-              <h2 className="text-xl font-bold text-teal mb-6">Color Blindness Simulations</h2>
+          {/* Contrast Ratios - Bottom */}
+          {colors.length > 0 && contrastResults.length > 0 && (
+            <div className="palette-contrast-section">
+              <h2 className="text-xl font-bold text-teal mb-4">Contrast Ratios</h2>
               <p className="text-sm text-gray-700 mb-6">
-                How your palette appears to people with different types of color vision deficiency.
+                Contrast ratios determine whether text in one color is readable on a background of another color. Below are recommendations for text color (black or white) to use on each color in your palette.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Original */}
-                <div>
-                  <h3 className="font-semibold text-charcoal mb-3">Normal Vision</h3>
-                  <div className="flex gap-2 mb-3">
-                    {colors.map((color) => (
-                      <div
-                        key={color.hex}
-                        className="flex-1 h-16 rounded border-2 border-gray-300"
-                        style={{ backgroundColor: color.hex }}
-                      />
-                    ))}
+              <div className="space-y-4">
+                {contrastResults.map((result, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded border-l-4 border-gray-300 bg-gray-50"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div
+                          className="w-8 h-8 rounded border-2 border-gray-300"
+                          style={{ backgroundColor: result.color1 }}
+                        />
+                        <span className="text-xs font-mono text-gray-600">vs</span>
+                        <div
+                          className="w-8 h-8 rounded border-2 border-gray-300"
+                          style={{ backgroundColor: result.color2 }}
+                        />
+                        <span className="text-sm font-semibold text-charcoal">
+                          {result.ratio}:1
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
+                        {result.wcagAAA && (
+                          <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded font-semibold">
+                            WCAG AAA
+                          </span>
+                        )}
+                        {result.wcagAA && !result.wcagAAA && (
+                          <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded font-semibold">
+                            WCAG AA
+                          </span>
+                        )}
+                        {!result.wcagAA && (
+                          <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded font-semibold">
+                            Needs Work
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {!result.wcagAA && (
+                      <div className="text-xs text-gray-700 bg-orange-50 p-3 rounded">
+                        <strong>Caveat:</strong> These colors don't have sufficient contrast for readable text. Consider using <span className="font-semibold capitalize">{result.recommendation}</span> text on <span className="font-mono">{result.color1}</span> instead, which will have better readability.
+                      </div>
+                    )}
                   </div>
-                  <div className="text-xs text-gray-600 text-center">Original colors</div>
-                </div>
+                ))}
+              </div>
 
-                {/* Protanopia */}
-                <div>
-                  <h3 className="font-semibold text-charcoal mb-3">Protanopia (Red-Blind)</h3>
-                  <div className="flex gap-2 mb-3">
-                    {colors.map((color) => (
-                      <div
-                        key={color.hex}
-                        className="flex-1 h-16 rounded border-2 border-gray-300"
-                        style={{
-                          backgroundColor:
-                            colorBlindResults[color.hex]?.protanopia || color.hex,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-600 text-center">
-                    ~1% of males affected
-                  </div>
-                </div>
-
-                {/* Deuteranopia */}
-                <div>
-                  <h3 className="font-semibold text-charcoal mb-3">Deuteranopia (Green-Blind)</h3>
-                  <div className="flex gap-2 mb-3">
-                    {colors.map((color) => (
-                      <div
-                        key={color.hex}
-                        className="flex-1 h-16 rounded border-2 border-gray-300"
-                        style={{
-                          backgroundColor:
-                            colorBlindResults[color.hex]?.deuteranopia || color.hex,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-600 text-center">
-                    ~1% of males affected
-                  </div>
-                </div>
-
-                {/* Tritanopia */}
-                <div>
-                  <h3 className="font-semibold text-charcoal mb-3">Tritanopia (Blue-Blind)</h3>
-                  <div className="flex gap-2 mb-3">
-                    {colors.map((color) => (
-                      <div
-                        key={color.hex}
-                        className="flex-1 h-16 rounded border-2 border-gray-300"
-                        style={{
-                          backgroundColor:
-                            colorBlindResults[color.hex]?.tritanopia || color.hex,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-600 text-center">
-                    ~0.001% of population affected
-                  </div>
-                </div>
-
-                {/* Achromatopsia */}
-                <div>
-                  <h3 className="font-semibold text-charcoal mb-3">Achromatopsia (Complete)</h3>
-                  <div className="flex gap-2 mb-3">
-                    {colors.map((color) => (
-                      <div
-                        key={color.hex}
-                        className="flex-1 h-16 rounded border-2 border-gray-300"
-                        style={{
-                          backgroundColor:
-                            colorBlindResults[color.hex]?.achromatopsia || color.hex,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-600 text-center">
-                    Grayscale vision
-                  </div>
-                </div>
+              <div className="bg-blue-50 p-4 rounded border-l-4 border-blue-400 mt-6">
+                <p className="text-xs font-semibold text-blue-900 mb-2">Understanding Contrast</p>
+                <ul className="text-xs text-blue-800 space-y-1">
+                  <li>• <strong>WCAG AAA (7:1)</strong> = Best for all text sizes and audiences</li>
+                  <li>• <strong>WCAG AA (4.5:1)</strong> = Minimum accessible standard for body text</li>
+                  <li>• <strong>Needs Work (&lt;4.5:1)</strong> = Consider using black or white text instead</li>
+                  <li>• <strong>Note:</strong> These ratios assume text on background colors</li>
+                </ul>
               </div>
             </div>
           )}

@@ -364,3 +364,11 @@ button:focus-visible {
   border-radius: 8px;
   border-top: 2px solid #174f5b;
 }
+
+.palette-contrast-section {
+  background: #f9f7f5;
+  padding: 2rem;
+  border-radius: 8px;
+  border-top: 2px solid #174f5b;
+  margin-top: 2rem;
+}
