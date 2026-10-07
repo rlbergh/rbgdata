@@ -348,3 +348,19 @@ a:focus-visible,
 button:focus-visible {
   @apply outline-2 outline-offset-2 outline-teal;
 }
+
+/* Color Palette Helper Tool Styles */
+.palette-input-section,
+.palette-analysis-section {
+  background: #f9f7f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #174f5b;
+}
+
+.palette-colorblind-section {
+  background: #f9f7f5;
+  padding: 2rem;
+  border-radius: 8px;
+  border-top: 2px solid #174f5b;
+}
