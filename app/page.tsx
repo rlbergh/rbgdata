@@ -12,7 +12,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/rbgdata/logo-primary.png"
+                src="/logo-primary.png"
                 alt="RBG Data - Data Visualization, Storytelling, Design"
                 className="w-full max-w-2xl h-auto mb-8"
               />
@@ -33,7 +33,7 @@ export default async function Home() {
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-teal opacity-10 rounded-none"></div>
                 <div className="relative z-10 bg-white p-8 border-l-4 border-teal">
                   <img
-                    src="/rbgdata/logo-submark.png"
+                    src="/logo-submark.png"
                     alt="RBG Data methodology"
                     className="w-64 h-auto mb-6"
                   />

@@ -12,12 +12,12 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <Link href="/" className="no-underline flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img
-              src="/rbgdata/logo-icon.png"
+              src="/logo-icon.png"
               alt="RBG Data"
               className="h-12 w-auto"
             />
             <img
-              src="/rbgdata/logo-wordmark.png"
+              src="/logo-wordmark.png"
               alt="RBG Data"
               className="hidden sm:block h-auto w-32 md:w-40"
             />
